@@ -1,0 +1,94 @@
+<app-header></app-header>
+
+<div style="margin-top: 80px">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <a routerLink="" class="btn btn-primary">Back to Home</a>
+
+    <div class="row border shadow p-5 mt-4">
+      <div class="col-lg-6">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png"
+          alt="no-image"
+          class="img-fluid"
+        />
+      </div>
+      <div class="col-lg-6">
+        <div style="height: 100%" class="d-flex flex-column align-items-center">
+          <h3 class="fw-bolder">Welcome User</h3>
+          <form class="mt-5" [formGroup]="registerForm" (ngSubmit)="register()">
+            <!-- user name -->
+
+            <div class="mb-3">
+              <input
+                type="text"
+                placeholder="User name"
+                class="form-control"
+                formControlName="username"
+              />
+            </div>
+
+            <!-- error div -->
+            <div
+              class="fw-bolder text-danger mb-3"
+              *ngIf="
+                this.registerForm.get('username')?.errors &&
+                this.registerForm.get('username')?.touched
+              "
+            >
+              Invalid username
+            </div>
+            <!-- email id -->
+            <div class="mb-3">
+              <input
+                type="email"
+                placeholder="email id please"
+                class="form-control"
+                formControlName="email"
+              />
+            </div>
+            <!-- error div -->
+            <div
+              class="fw-bolder text-danger mb-3"
+              *ngIf="
+                this.registerForm.get('email')?.errors &&
+                this.registerForm.get('email')?.touched
+              "
+            >
+              Invalid email
+            </div>
+            <!-- password -->
+            <div class="mb-3">
+              <input
+                type="password"
+                placeholder="enter your password"
+                class="form-control"
+                formControlName="password"
+              />
+            </div>
+            <!-- error div -->
+            <div
+              class="fw-bolder text-danger mb-3"
+              *ngIf="
+                this.registerForm.get('password')?.errors &&
+                this.registerForm.get('password')?.touched
+              "
+            >
+              Invalid password
+            </div>
+
+            <input
+              type="submit"
+              value="Register"
+              class="btn btn-primary mt-3 mb-4"
+            />
+          </form>
+
+          <p>
+            Already user? click here
+            <a class="" routerLink="/user/login">Login</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
